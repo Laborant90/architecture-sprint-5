@@ -1,0 +1,45 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - ask_architecture
+  - ask_ms_architecture
+  - request_info
+
+responses:
+
+  utter_greet:
+    - text: "Привет! Чем могу помочь в области архитектуры программного обеспечения?"
+  
+  utter_goodbye:
+    - text: "До свидания! Если появятся вопросы по архитектуре ПО, обращайтесь."
+  
+  utter_ask_more:
+    - text: "Что именно вас интересует в архитектуре программного обеспечения?"
+
+  utter_architecture_response:
+    - text: "Архитектура ПО включает выбор структур, которые обеспечивают масштабируемость, гибкость и поддерживаемость приложения. Задайте конкретный вопрос по этой теме, и я помогу вам с информацией."
+
+  utter_ms_architecture_response:
+    - text: "Микросервисная архитектура — это способ построения приложений, которые состоят из независимых друг от друга небольших модулей (микросервисов)."
+
+#  utter_out_of_scope:
+#    - text: Извините, но нам лучше не отвлекаться от нашей цели.
+
+entities:
+  - topic
+
+slots:
+  topic:
+    type: text
+    influence_conversation: false
+    mappings:
+        - type: from_text
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+actions:
+  - action_default_fallback
